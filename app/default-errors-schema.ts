@@ -1,9 +1,9 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 // basic validation schema with default error messages
 export const defaultErrorsSchema = z.object({
   name: z.string(),
-  email: z.string().email(),
+  email: z.email(),
   phone: z.string(),
 });
 
