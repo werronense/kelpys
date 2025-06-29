@@ -14,6 +14,11 @@ import {
 export default function DefaultOrderForm() {
   const form = useForm<DefaultErrorsSchemaT>({
     resolver: zodResolver(defaultErrorsSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+    },
   });
 
   const { handleSubmit, control } = form;
