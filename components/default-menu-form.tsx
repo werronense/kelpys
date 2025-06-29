@@ -1,5 +1,6 @@
 "use client";
 
+import { useContext } from "react";
 import { z } from "zod/v4";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -14,14 +15,27 @@ import {
 } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
 import { menu } from "@/data/menu";
+import { OrderContext } from "@/components/order-context";
+import { useRouter } from "next/navigation";
 
-const orderSchema = z.object({
-  order: z.array(z.number()).refine((value) => value.some((item) => item)),
+const orderItemSchema = z.object({
+  name: z.string(),
+  id: z.number(),
+  price: z.number(),
 });
 
-type OrderT = z.infer<typeof orderSchema>;
+export type OrderItemT = z.infer<typeof orderItemSchema>;
+
+const orderSchema = z.object({
+  order: orderItemSchema.array().refine((value) => value.some((item) => item)),
+});
+
+export type OrderT = z.infer<typeof orderSchema>;
 
 export default function DefaultMenuForm() {
+  const { setOrder } = useContext(OrderContext);
+  const router = useRouter();
+
   const form = useForm<OrderT>({
     resolver: zodResolver(orderSchema),
     defaultValues: {
@@ -32,7 +46,11 @@ export default function DefaultMenuForm() {
   const { handleSubmit, control } = form;
 
   function onSubmit(values: OrderT) {
-    console.log(JSON.stringify(values));
+    if (setOrder) {
+      setOrder(values.order);
+    }
+
+    router.push("/form-defaults/confirm");
   }
 
   return (
@@ -51,28 +69,30 @@ export default function DefaultMenuForm() {
                 return (
                   <section key={heading} className={"space-y-2"}>
                     <h2>{heading}</h2>
-                    {options.map(({ name, id }) => (
+                    {options.map((option) => (
                       <FormField
-                        key={id}
+                        key={option.id}
                         control={control}
                         name={"order"}
                         render={({ field }) => (
                           <FormItem className={"flex gap-2"}>
                             <FormControl>
                               <Checkbox
-                                checked={field.value?.includes(id)}
+                                checked={field.value?.some(
+                                  (item) => item.id === option.id,
+                                )}
                                 onCheckedChange={(checked) => {
                                   return checked
-                                    ? field.onChange([...field.value, id])
+                                    ? field.onChange([...field.value, option])
                                     : field.onChange(
                                         field.value?.filter(
-                                          (value) => value !== id,
+                                          (value) => value.id !== option.id,
                                         ),
                                       );
                                 }}
                               />
                             </FormControl>
-                            <FormLabel>{name}</FormLabel>
+                            <FormLabel>{option.name}</FormLabel>
                           </FormItem>
                         )}
                       />
