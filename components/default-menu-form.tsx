@@ -44,7 +44,9 @@ export default function DefaultMenuForm() {
     },
   });
 
-  const { handleSubmit, control } = form;
+  const { handleSubmit, control, watch } = form;
+
+  const total = watch("order").reduce((acc, item) => acc + item.price, 0);
 
   function onSubmit(values: OrderT) {
     if (setOrder) {
@@ -107,7 +109,8 @@ export default function DefaultMenuForm() {
             </FormItem>
           )}
         />
-        <div className={"flex justify-end mt-6"}>
+        <div className={"flex flex-col gap-4 items-end mt-4"}>
+          <p className={"font-semibold text-sm"}>Total: {formatPrice(total)}</p>
           <Button type="submit">Place Order</Button>
         </div>
       </form>
