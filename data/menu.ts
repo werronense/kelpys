@@ -1,6 +1,6 @@
 const burgers = [
-  { name: "Clamburger", id: 1, price: 300 },
-  { name: "Clamburger Supreme", id: 2, price: 450 },
+  { name: "Kelpy Burger", id: 1, price: 300 },
+  { name: "Kelpy Burger Supreme", id: 2, price: 450 },
   { name: "BBQ Squid Burger", id: 3, price: 350 },
   { name: "Fish Fillet", id: 4, price: 300 },
 ];
