@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import { OrderContext } from "@/components/order-context";
+import { formatPrice } from "@/lib/utils";
 
 export default function DisplayOrder() {
   const { order } = useContext(OrderContext);
@@ -18,13 +19,13 @@ export default function DisplayOrder() {
           {order.map(({ name, price, id }) => (
             <div key={id} className={"flex gap-2 justify-between"}>
               <span>{name}</span>
-              <span>{price}</span>
+              <span>{formatPrice(price)}</span>
             </div>
           ))}
         </>
       )}
       <div className={"flex gap-2 justify-end font-semibold"}>
-        <span>Total: {total ?? 0}</span>
+        <span>Total: {formatPrice(total ?? 0)}</span>
       </div>
     </section>
   );
