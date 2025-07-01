@@ -17,6 +17,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { menu } from "@/data/menu";
 import { OrderContext } from "@/components/order-context";
 import { useRouter } from "next/navigation";
+import { formatPrice } from "@/lib/utils";
 
 const orderItemSchema = z.object({
   name: z.string(),
@@ -67,7 +68,7 @@ export default function DefaultMenuForm() {
               </div>
               {menu.map(({ heading, options }) => {
                 return (
-                  <section key={heading} className={"space-y-2"}>
+                  <section key={heading} className={"space-y-2 mt-2"}>
                     <h2>{heading}</h2>
                     {options.map((option) => (
                       <FormField
@@ -92,7 +93,10 @@ export default function DefaultMenuForm() {
                                 }}
                               />
                             </FormControl>
-                            <FormLabel>{option.name}</FormLabel>
+                            <FormLabel className={"justify-between w-full"}>
+                              <span>{option.name}</span>
+                              <span>{formatPrice(option.price)}</span>
+                            </FormLabel>
                           </FormItem>
                         )}
                       />
@@ -103,9 +107,9 @@ export default function DefaultMenuForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className={"mt-4"}>
-          Place Order
-        </Button>
+        <div className={"flex justify-end mt-6"}>
+          <Button type="submit">Place Order</Button>
+        </div>
       </form>
     </Form>
   );
