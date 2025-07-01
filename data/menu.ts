@@ -13,8 +13,11 @@ const sides = [
 ];
 
 const beverages = [
-  { name: "Kelp Smoothie", id: 9, price: 75 },
-  { name: "Urchin Cola", id: 10, price: 50 },
+  { name: "Vanilla Clamshake", id: 9, price: 100 },
+  { name: "Chocolate Clamshake", id: 10, price: 125 },
+  { name: "Strawberry Clamshake", id: 11, price: 125 },
+  { name: "Kelp Smoothie", id: 12, price: 150 },
+  { name: "Urchin Cola", id: 13, price: 75 },
 ];
 
 export const menu = [
