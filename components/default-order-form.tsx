@@ -10,8 +10,11 @@ import {
   defaultErrorsSchema,
   DefaultErrorsSchemaT,
 } from "@/app/default-errors-schema";
+import { useRouter } from "next/navigation";
 
 export default function DefaultOrderForm() {
+  const router = useRouter();
+
   const form = useForm<DefaultErrorsSchemaT>({
     resolver: zodResolver(defaultErrorsSchema),
     defaultValues: {
@@ -24,7 +27,7 @@ export default function DefaultOrderForm() {
   const { handleSubmit, control } = form;
 
   function onSubmit(values: DefaultErrorsSchemaT) {
-    console.log(values);
+    router.push("/form-defaults/success");
   }
 
   return (
