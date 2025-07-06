@@ -60,7 +60,9 @@ export default function DefaultOrderForm() {
             </OrderFormItem>
           )}
         />
-        <Button type={"submit"}>Submit</Button>
+        <div className={"flex justify-end"}>
+          <Button type={"submit"}>Submit</Button>
+        </div>
       </form>
     </Form>
   );
