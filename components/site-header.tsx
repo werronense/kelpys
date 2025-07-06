@@ -3,9 +3,9 @@ import { PawPrint } from "lucide-react";
 
 export default function SiteHeader() {
   return (
-    <div
+    <header
       className={
-        "bg-foreground text-background py-6 px-4 border-b-2 border-background"
+        "bg-foreground text-background py-6 px-4 fixed top-0 left-0 w-full"
       }
     >
       <nav className={"max-w-sm mx-auto sm:px-4"}>
@@ -26,6 +26,6 @@ export default function SiteHeader() {
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
 }

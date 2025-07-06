@@ -32,10 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${permanentMarker.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${permanentMarker.variable} antialiased relative`}
       >
         <SiteHeader />
-        <main className={"px-4 max-w-sm mx-auto"}>{children}</main>
+        <main className={"px-4 pb-6 mt-20 max-w-sm mx-auto"}>{children}</main>
       </body>
     </html>
   );
