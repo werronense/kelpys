@@ -7,16 +7,16 @@ import { Form, FormField } from "@/components/ui/form";
 import OrderFormItem from "@/components/order-form-item";
 import { Input } from "@/components/ui/input";
 import {
-  customErrorsSchema,
-  CustomErrorsSchemaT,
-} from "@/app/custom-errors-schema";
+  customConfirmationSchema,
+  CustomConfirmationSchemaT,
+} from "@/app/form-custom/confirm/custom-confirmation-schema";
 import { useRouter } from "next/navigation";
 
 export default function CustomOrderForm() {
   const router = useRouter();
 
-  const form = useForm<CustomErrorsSchemaT>({
-    resolver: zodResolver(customErrorsSchema),
+  const form = useForm<CustomConfirmationSchemaT>({
+    resolver: zodResolver(customConfirmationSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -26,7 +26,7 @@ export default function CustomOrderForm() {
 
   const { handleSubmit, control } = form;
 
-  function onSubmit(values: CustomErrorsSchemaT) {
+  function onSubmit(values: CustomConfirmationSchemaT) {
     router.push("/form-custom/success");
   }
 
