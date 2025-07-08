@@ -4,7 +4,7 @@ const phoneNumberRegex = /^\(?\d{3}\)?\s?-?\d{3}\s?-?\d{4}$/;
 
 // basic validation schema with default error messages
 export const defaultErrorsSchema = z.object({
-  name: z.string(),
+  name: z.string().trim().min(1),
   email: z.email(),
   phone: z.string().regex(phoneNumberRegex),
 });
