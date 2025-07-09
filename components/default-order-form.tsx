@@ -37,7 +37,7 @@ export default function DefaultOrderForm() {
           control={control}
           name={"name"}
           render={({ field }) => (
-            <OrderFormItem label={"Name"}>
+            <OrderFormItem label={"Name"} required>
               <Input {...field} />
             </OrderFormItem>
           )}
@@ -46,7 +46,7 @@ export default function DefaultOrderForm() {
           control={control}
           name={"email"}
           render={({ field }) => (
-            <OrderFormItem label={"Email address"}>
+            <OrderFormItem label={"Email address"} required>
               <Input {...field} />
             </OrderFormItem>
           )}
@@ -55,7 +55,7 @@ export default function DefaultOrderForm() {
           control={control}
           name={"phone"}
           render={({ field }) => (
-            <OrderFormItem label={"Phone number"}>
+            <OrderFormItem label={"Phone number"} required>
               <Input {...field} />
             </OrderFormItem>
           )}

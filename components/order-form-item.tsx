@@ -8,12 +8,19 @@ import {
 
 type OrderFormItemProps = PropsWithChildren<{
   label: string;
+  required?: boolean;
 }>;
 
-export default function OrderFormItem({ label, children }: OrderFormItemProps) {
+export default function OrderFormItem({
+  label,
+  required,
+  children,
+}: OrderFormItemProps) {
   return (
     <FormItem>
-      <FormLabel>{label}</FormLabel>
+      <FormLabel className={`${required ? "after:content-['*']" : ""}`}>
+        {label}
+      </FormLabel>
       <FormControl>{children}</FormControl>
       <div className={"h-5"}>
         <FormMessage />

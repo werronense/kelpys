@@ -65,7 +65,9 @@ export default function DefaultMenuForm() {
           render={() => (
             <FormItem>
               <div className={"flex gap-2 items-end"}>
-                <FormLabel className={"text-xl"}>Your Order</FormLabel>
+                <FormLabel className={"text-xl after:content-['*']"}>
+                  Your Order
+                </FormLabel>
                 <FormMessage className={"mb-0.5"} />
               </div>
               {menu.map(({ heading, options }) => {
