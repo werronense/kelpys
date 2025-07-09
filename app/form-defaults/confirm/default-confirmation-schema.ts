@@ -6,7 +6,7 @@ const phoneNumberRegex = /^\(?\d{3}\)?\s?-?\d{3}\s?-?\d{4}$/;
 export const defaultConfirmationSchema = z.object({
   name: z.string().trim().min(1),
   email: z.email(),
-  phone: z.string().regex(phoneNumberRegex),
+  phone: z.string().trim().regex(phoneNumberRegex),
 });
 
 export type DefaultConfirmationSchemaT = z.infer<

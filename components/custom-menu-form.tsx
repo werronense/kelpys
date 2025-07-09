@@ -26,9 +26,7 @@ const orderItemSchema = z.object({
 });
 
 const orderSchema = z.object({
-  order: orderItemSchema.array().refine((value) => value.some((item) => item), {
-    error: "Choose at least one item.",
-  }),
+  order: orderItemSchema.array().min(1, { error: "Choose at least one item." }),
 });
 
 export type OrderT = z.infer<typeof orderSchema>;

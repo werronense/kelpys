@@ -7,7 +7,8 @@ export const customConfirmationSchema = z.object({
   name: z.string().trim().min(1, { error: "Enter your name" }),
   email: z.email({ error: "Enter a valid email address" }),
   phone: z
-    .string({ error: "Phone is required" })
+    .string()
+    .trim()
     .regex(phoneNumberRegex, { error: "Enter a 10-digit phone number" }),
 });
 

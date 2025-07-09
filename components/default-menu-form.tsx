@@ -28,7 +28,7 @@ const orderItemSchema = z.object({
 export type OrderItemT = z.infer<typeof orderItemSchema>;
 
 const orderSchema = z.object({
-  order: orderItemSchema.array().refine((value) => value.some((item) => item)),
+  order: orderItemSchema.array().min(1),
 });
 
 export type OrderT = z.infer<typeof orderSchema>;
