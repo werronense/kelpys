@@ -1,5 +1,10 @@
 import PageHeading from "@/components/page-heading";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Zod Basics",
+};
 
 export default function Page() {
   return (

@@ -1,5 +1,10 @@
 import Image from "next/image";
 import happyOtter from "@/assets/happy-otter.jpg";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Success | Custom Errors",
+};
 
 export default function Page() {
   return (

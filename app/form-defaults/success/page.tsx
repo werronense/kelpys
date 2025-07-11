@@ -1,5 +1,10 @@
 import Image from "next/image";
 import frustratedOtter from "@/assets/frustrated-otter.jpg";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Success | Default Errors",
+};
 
 export default function Page() {
   return (
