@@ -1,5 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import PageHeading from "@/components/page-heading";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 
 export default function Home() {
   return (
@@ -14,7 +19,7 @@ export default function Home() {
           <Link href={"/form-defaults"}>Form validation with Zod</Link>
         </li>
         <li>
-          <Link href={"/form-custom"}>Customizing Error Messages</Link>
+          <Link href={"/form-custom"}>Customizing error messages</Link>
         </li>
       </ol>
     </div>
