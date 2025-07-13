@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/site-header";
+import SiteFooter from "@/components/site-footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,10 +33,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${permanentMarker.variable} antialiased relative`}
+        className={`${geistSans.variable} ${geistMono.variable} ${permanentMarker.variable} antialiased relative min-h-screen flex flex-col space-between`}
       >
         <SiteHeader />
-        <main className={"px-4 pb-6 mt-20 max-w-sm mx-auto"}>{children}</main>
+        <main className={"px-4 pb-6 mt-20 max-w-sm mx-auto flex-1"}>
+          {children}
+        </main>
+        <SiteFooter />
       </body>
     </html>
   );
